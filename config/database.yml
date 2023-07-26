@@ -1,16 +1,30 @@
 default: &default
-  adapter: sqlite3
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
   timeout: 5000
 
 development:
   <<: *default
-  database: db/development.sqlite3
+  adapter: postgresql
+  database: sinatra_react_project_development
+  username: postgres
+  password: Maymuna2021
+  host: localhost
 
 test:
   <<: *default
-  database: db/test.sqlite3
+  adapter: postgresql
+  database: sinatra_react_project_test
+  username: postgres
+  password: Maymuna2021
+  host: localhost
 
 production:
   <<: *default
-  database: db/production.sqlite3
+  adapter: postgresql
+  encoding: unicode
+  pool: 5
+  timeout: 5000
+  host: localhost
+  username: your_postgres_username
+  password: your_postgres_password
+  database: your_postgres_database_name
